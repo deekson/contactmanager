@@ -1,33 +1,43 @@
-class NewContact:
-          def __init__(self, name, phone, email, website, notes):
+class Contact:
+     def __init__(self, *args):
 
-	          self.name =  name
-	          self.phone = phone
-	          self.email = email
-	          self.website = website
-	          self.notes = notes
+          name = 'Kofi'
+          phone = '1234'
+          email = 'kofi@mw.com'
+          website = 'kofi.com'
+          notes = 'None'
 
-          def create_contact(self):
-               self.name =  input('Enter your name \n')
-               self.phone = int((input('Enter your phone \n')))
-               self.email = input('Enter your email \n')
-               self.website = input('Enter your website \n')
-               self.notes = input('Enter your notes \n')
+class ContactManager:
 
-          def list_contact(self):
+     def create_contact():
 
-               contacts = (self.name,self.phone,self.email,self.website,self.notes)
-               print(contacts)
+               contact = Contact()
+               contact.name =  str(input('Enter your name \n'))
+               contact.phone = int((input('Enter your phone \n')))
+               # contact.email = str(input('Enter your email \n'))
+               # contact.website = str(input('Enter your website \n'))
+               # contact.notes = str(input('Enter your notes \n'))
+               phonebook.append(contact)
 
-name = str(input('Enter name: '))
-phone = int(input('Enter your phone \n'))
-email = str (input('Enter your email \n'))
-website = str (input('Enter your website \n'))
-notes = str(input('Enter your notes \n'))
+     def search_contact():
+          SearchTerm = input('Who are you searching for? \n')
+
+          for item in phonebook:
+               if SearchTerm == item.name:
+                    print('Item was found')
+                    pass
+               
+               else:
+                    print ('Item was not found')
 
 
-contact = NewContact(name,phone,email, website,notes)
+     def all_contacts():
+          for item in phonebook:
+               print(item)
 
-# contact.create_contact()
+phonebook = []
 
-contact.list_contact()
+# ContactManager.create_contact()
+# ContactManager.search_contact()
+ContactManager.all_contacts()
+
