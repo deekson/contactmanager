@@ -15,31 +15,31 @@ class ContactManager:
 
      def create_contact():
 
-               contact = Contact()
-               contact.name =  str(input('Enter your name \n'))
-               contact.phone = str((input('Enter your phone \n')))
-               # contact.email = str(input('Enter your email \n'))
-               # contact.website = str(input('Enter your website \n'))
-               # contact.notes = str(input('Enter your notes \n'))
-               phonebook.append(contact)
-               contact.all = (contact.name,contact.phone)
-               # ,contact.email,contact.website,contact.notes
+          contact = Contact()
+          contact.name =  str(input('Enter your name \n'))
+          contact.phone = str((input('Enter your phone \n')))
+          # contact.email = str(input('Enter your email \n'))
+          # contact.website = str(input('Enter your website \n'))
+          # contact.notes = str(input('Enter your notes \n'))
+          phonebook.append(contact)
+          contact.all = (contact.name,contact.phone)
+          # ,contact.email,contact.website,contact.notes
+          print("Contact added succesfully")
 
 
      def all_contacts():
+          print("Contact list: \n")
           for item in phonebook:
-               print(item.all)
+               print(item.all,"\n")
 
      def search_contact():
           SearchTerm = input('Who are you searching for? \n')
           
           for index,item in enumerate(phonebook):
                if SearchTerm == item.name:
-                    print(item.all)
-                    return
+                    print("Search Results: \n",item.all)
                else:
-                    print("Name doesn't exit")
-                    return
+                    print("Name doesn't exit \n")
 
      def delete_contact():
           SearchTerm = input('Type Contact to Delete \n')
@@ -47,41 +47,43 @@ class ContactManager:
           for index,item in enumerate(phonebook):
                if SearchTerm == item.name:
                     phonebook.pop(index)
-                    return
-
+                    print("Contact succesfully deleted")
+                    pass
+               
                else:
                     print("Name doesn't exit")
-                    return
+                    pass
  
-def menu():
-     print ("Do you want to \n")
-     print ("1. Add new Contact \n")
-     print ("2. Search Contact \n")
-     print ("3. Delete Contact \n")
-     print ("4. Quit \n")
-     return input("Type corresponding digit and press Enter \n")
+     def menu():
+          print ("\n Do you want to \n")
+          print ("1. Add new Contact \n")
+          print ("2. Search Contact \n")
+          print ("3. Delete Contact \n")
+          print ("4. View Contacts \n")
+          print ("5. Quit \n")
+          return input("Type corresponding digit and press Enter \n")
+          os.system('clear')
 
 
 phonebook = []
 
-choice = menu()
+choice = ContactManager.menu()
 
-while choice != "4":
+while choice != "5":
+
      if choice ==  "1":
           ContactManager.create_contact()
-     return
      
      elif choice ==  "2":
           ContactManager.search_contact()
-     return
 
      elif choice ==  "3":
           ContactManager.delete_contact()
-     return
-     
+
      elif choice ==  "4":
-          pass
+          ContactManager.all_contacts()
 
      else:
           os.system('clear')
-          choice = menu()     
+
+     choice = ContactManager.menu()     
